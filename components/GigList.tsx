@@ -4,16 +4,15 @@ import GigCard from './GigCard';
 export default function GigList({ gigs }: { gigs: Gig[] }) {
   if (gigs.length === 0) {
     return (
-      <div className="text-center py-20 text-gray-500">
-        <p className="text-5xl mb-4">🎸</p>
-        <p className="text-lg">No gigs saved yet.</p>
-        <p className="text-sm mt-2">Click a 💾 Save link in Slack to add one.</p>
+      <div className="border-4 border-black p-12 text-center brutalist-shadow">
+        <p className="text-4xl font-black uppercase tracking-tighter mb-4">NO GIGS SAVED YET</p>
+        <p className="text-sm font-bold uppercase">Click a Save link in Slack to add one.</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-3">
+    <div className="flex flex-col gap-4">
       {gigs.map((gig) => (
         <GigCard key={gig.id} gig={gig} />
       ))}

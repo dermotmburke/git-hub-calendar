@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f9f9f9",
+                        "surface-bright": "#f9f9f9",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1b1b1b",
+                        "on-tertiary-fixed": "#ffffff",
+                        "secondary": "#5e5e5e",
+                        "on-secondary-fixed": "#1b1b1b",
+                        "surface-container-low": "#f3f3f3",
+                        "on-tertiary": "#e2e2e2",
+                        "tertiary-container": "#747474",
+                        "on-primary-fixed": "#ffffff",
+                        "tertiary-fixed": "#5e5e5e",
+                        "surface-container": "#eeeeee",
+                        "inverse-surface": "#303030",
+                        "secondary-fixed": "#c6c6c6",
+                        "inverse-on-surface": "#f1f1f1",
+                        "on-surface-variant": "#474747",
+                        "primary-fixed": "#5e5e5e",
+                        "background": "#f9f9f9",
+                        "on-error-container": "#410002",
+                        "primary-container": "#3b3b3b",
+                        "on-primary": "#e2e2e2",
+                        "outline-variant": "#c6c6c6",
+                        "surface-variant": "#e2e2e2",
+                        "on-primary-fixed-variant": "#e2e2e2",
+                        "surface-tint": "#5e5e5e",
+                        "on-background": "#1b1b1b",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#3b3b3b",
+                        "primary-fixed-dim": "#474747",
+                        "secondary-container": "#d4d4d4",
+                        "primary": "#000000",
+                        "on-tertiary-container": "#ffffff",
+                        "surface-container-high": "#e8e8e8",
+                        "on-primary-container": "#ffffff",
+                        "outline": "#777777",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#c6c6c6",
+                        "secondary-fixed-dim": "#ababab",
+                        "on-secondary-container": "#1b1b1b",
+                        "surface-container-highest": "#e2e2e2",
+                        "tertiary-fixed-dim": "#474747",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#3b3b3b",
+                        "on-tertiary-fixed-variant": "#e2e2e2",
+                        "surface-dim": "#dadada"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0px",
+                        "lg": "0px",
+                        "xl": "0px",
+                        "full": "0px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Space Grotesk"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .brutalist-shadow {
+            box-shadow: 4px 4px 0px 0px #000000;
+        }
+        .brutalist-shadow-sm {
+            box-shadow: 2px 2px 0px 0px #000000;
+        }
+        .halftone-bg {
+            background-image: radial-gradient(#000 10%, transparent 11%);
+            background-size: 4px 4px;
+        }
+    </style>
+</head>
+<body class="bg-white text-black font-body overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-white dark:bg-black border-b-4 border-black dark:border-white">
+<div class="flex items-center gap-4">
+<span class="text-4xl font-black tracking-tighter text-black dark:text-white font-headline">GIGHUB</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-4 font-headline uppercase tracking-tighter font-bold text-black dark:text-white">
+<a class="hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black px-2 active:translate-x-1 active:translate-y-1 transition-transform" href="#">ARCHIVE</a>
+<a class="text-white bg-black dark:text-black dark:bg-white px-2 active:translate-x-1 active:translate-y-1 transition-transform" href="#">CALENDAR</a>
+<a class="hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black px-2 active:translate-x-1 active:translate-y-1 transition-transform" href="#">VENUES</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl cursor-pointer" data-icon="confirmation_number">confirmation_number</span>
+<span class="material-symbols-outlined text-3xl cursor-pointer" data-icon="person">person</span>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="mt-24 min-h-screen px-6 pb-20">
+<div class="flex flex-col lg:flex-row gap-8">
+<!-- Calendar Section -->
+<div class="flex-grow">
+<!-- Calendar Header -->
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none font-headline">NOVEMBER</h1>
+<p class="text-2xl font-bold font-headline mt-2">2024 / Q4 SCHEDULE</p>
+</div>
+<div class="flex gap-2">
+<button class="border-4 border-black p-4 active:bg-black active:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back_ios">arrow_back_ios</span>
+</button>
+<button class="border-4 border-black p-4 active:bg-black active:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="grid grid-cols-7 border-t-4 border-l-4 border-black">
+<!-- Day Labels -->
+<div class="border-r-4 border-b-4 border-black p-4 text-sm font-bold uppercase">MON</div>
+<div class="border-r-4 border-b-4 border-black p-4 text-sm font-bold uppercase">TUE</div>
+<div class="border-r-4 border-b-4 border-black p-4 text-sm font-bold uppercase">WED</div>
+<div class="border-r-4 border-b-4 border-black p-4 text-sm font-bold uppercase">THU</div>
+<div class="border-r-4 border-b-4 border-black p-4 text-sm font-bold uppercase">FRI</div>
+<div class="border-r-4 border-b-4 border-black p-4 text-sm font-bold uppercase">SAT</div>
+<div class="border-r-4 border-b-4 border-black p-4 text-sm font-bold uppercase">SUN</div>
+<!-- Days -->
+<!-- Row 1 -->
+<div class="border-r-4 border-b-4 border-black p-2 min-h-[120px] bg-surface-container"></div>
+<div class="border-r-4 border-b-4 border-black p-2 min-h-[120px] bg-surface-container"></div>
+<div class="border-r-4 border-b-4 border-black p-2 min-h-[120px] bg-surface-container"></div>
+<div class="border-r-4 border-b-4 border-black p-2 min-h-[120px] bg-surface-container"></div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">01</span>
+<div class="mt-4 flex flex-wrap gap-1">
+<div class="w-4 h-4 bg-black"></div>
+</div>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">02</span>
+<div class="mt-4 flex flex-wrap gap-1">
+<div class="w-4 h-4 bg-black"></div>
+<div class="w-4 h-4 bg-black"></div>
+</div>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">03</span>
+</div>
+<!-- Row 2 -->
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">04</span>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative bg-black text-white">
+<span class="font-bold">05</span>
+<div class="mt-4 flex flex-wrap gap-1">
+<div class="w-4 h-4 bg-white"></div>
+</div>
+<div class="absolute bottom-2 right-2 border border-white px-1 text-[10px] font-bold">SELECTED</div>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">06</span>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">07</span>
+<div class="mt-4 flex flex-wrap gap-1">
+<div class="w-4 h-4 bg-black"></div>
+</div>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">08</span>
+<div class="mt-4 flex flex-wrap gap-1">
+<div class="w-4 h-4 bg-black"></div>
+<div class="w-4 h-4 bg-black"></div>
+</div>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">09</span>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">10</span>
+</div>
+<!-- Row 3 -->
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">11</span>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">12</span>
+<div class="mt-4 flex flex-wrap gap-1">
+<div class="w-4 h-4 bg-black"></div>
+</div>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">13</span>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">14</span>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">15</span>
+<div class="mt-4 flex flex-wrap gap-1">
+<div class="w-4 h-4 bg-black"></div>
+<div class="w-4 h-4 bg-black"></div>
+<div class="w-4 h-4 bg-black"></div>
+</div>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">16</span>
+</div>
+<div class="border-r-4 border-b-4 border-black p-4 min-h-[120px] relative">
+<span class="font-bold">17</span>
+</div>
+</div>
+</div>
+<!-- Sidebar Details -->
+<aside class="w-full lg:w-[400px] flex flex-col gap-6">
+<div class="border-4 border-black p-6 bg-white brutalist-shadow">
+<div class="flex justify-between items-start mb-6">
+<div class="bg-black text-white px-3 py-1 font-black text-2xl">05 NOV</div>
+<span class="font-bold uppercase text-xs tracking-widest border-2 border-black px-2">Tuesday</span>
+</div>
+<div class="space-y-8">
+<!-- Event Item -->
+<div class="border-b-4 border-black pb-6 last:border-b-0">
+<div class="flex justify-between mb-2">
+<span class="text-xs font-bold bg-black text-white px-2">20:30</span>
+<span class="text-xs font-bold uppercase">Sold Out</span>
+</div>
+<h3 class="text-3xl font-black uppercase tracking-tighter mb-2 leading-none">THE VOID RESONANCE</h3>
+<p class="text-sm font-bold uppercase mb-4">Venue: Undercurrent Hall</p>
+<img class="w-full h-48 object-cover border-4 border-black mb-4 grayscale" data-alt="high contrast black and white photo of a dark techno nightclub with laser lights and smoke" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIRa0tVKcml_UohRKTCEL1VjDxhoAn5UgiFoNUVb4LENl-l4LOzFSvn6a_RO1uehCrQHrBsHDO0ilrOUD_g2E0Sao9XAjh_OD3mWi0vm7PdaYMYotEgVZi3gRQ5QKqUqueCl-6yXC9ClCqRYwJUYbfkd05cxuRWsv5ptM1c47dJDDkKQS-zo6w1J6q9wWaolX4veecIl_FHXb0q0o64PA6oJhFSvynyMOS5Vl5pb4Idaz7CrFAaFsaiKRk_2DzNIpbI_e24GKH2BYN"/>
+<button class="w-full bg-black text-white font-bold py-3 hover:invert transition-all active:translate-x-1 active:translate-y-1">VIEW ARCHIVE</button>
+</div>
+<!-- Secondary Event -->
+<div class="pt-2">
+<div class="flex justify-between mb-2">
+<span class="text-xs font-bold border-2 border-black px-2">22:00</span>
+<span class="text-xs font-bold uppercase">Tickets Available</span>
+</div>
+<h3 class="text-3xl font-black uppercase tracking-tighter mb-2 leading-none">PULSE GENERATOR</h3>
+<p class="text-sm font-bold uppercase">Venue: Concrete Basement</p>
+</div>
+</div>
+</div>
+<div class="border-4 border-black p-6 bg-black text-white relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="text-xl font-black uppercase mb-4 tracking-tighter">SUBSCRIBE TO THE LEDGER</h4>
+<div class="flex flex-col gap-4">
+<input class="bg-transparent border-2 border-white text-white placeholder-white/50 p-3 font-bold focus:border-white focus:ring-0" placeholder="EMAIL ADDRESS" type="email"/>
+<button class="bg-white text-black font-black p-3 hover:bg-surface-variant transition-colors">JOIN</button>
+</div>
+</div>
+<div class="absolute top-0 right-0 opacity-10 text-9xl font-black -mr-10 -mt-10 pointer-events-none select-none">GH</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t-4 border-black dark:border-white bg-white dark:bg-black">
+<div class="w-full flex flex-col md:flex-row justify-between items-center p-8 gap-4 font-headline text-xs font-bold uppercase">
+<div class="text-xl font-black text-black dark:text-white">GIGHUB</div>
+<div class="flex gap-8">
+<a class="hover:invert transition-all duration-75 no-underline" href="#">ARCHIVE</a>
+<a class="hover:invert transition-all duration-75 underline decoration-4" href="#">VENUES</a>
+<a class="hover:invert transition-all duration-75 no-underline" href="#">TERMS</a>
+<a class="hover:invert transition-all duration-75 no-underline" href="#">CONTACT</a>
+</div>
+<div class="text-black dark:text-white">©2024 GIGHUB SONIC LEDGER</div>
+</div>
+</footer>
+<!-- Floating Action Element -->
+<button class="fixed bottom-8 right-8 bg-black text-white p-6 brutalist-shadow z-40 active:translate-x-1 active:translate-y-1 transition-transform group">
+<span class="material-symbols-outlined text-4xl" data-icon="add">add</span>
+</button>
+</body></html>

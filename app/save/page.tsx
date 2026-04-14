@@ -13,10 +13,10 @@ export default async function SavePage({
 
   if (!artist || !location || !date) {
     return (
-      <div className="text-center py-16">
-        <p className="text-red-400 text-lg">Missing required event data.</p>
-        <Link href="/" className="text-indigo-400 hover:underline mt-4 block">
-          ← Back to gigs
+      <div className="border-4 border-black p-12 text-center brutalist-shadow max-w-md mx-auto">
+        <p className="text-2xl font-black uppercase tracking-tighter mb-4">MISSING EVENT DATA</p>
+        <Link href="/" className="text-xs font-black uppercase hover:underline decoration-2 mt-4 block">
+          ← BACK TO GIGS
         </Link>
       </div>
     );
@@ -25,10 +25,10 @@ export default async function SavePage({
   const eventDate = new Date(date);
   if (isNaN(eventDate.getTime())) {
     return (
-      <div className="text-center py-16">
-        <p className="text-red-400 text-lg">Invalid event date.</p>
-        <Link href="/" className="text-indigo-400 hover:underline mt-4 block">
-          ← Back to gigs
+      <div className="border-4 border-black p-12 text-center brutalist-shadow max-w-md mx-auto">
+        <p className="text-2xl font-black uppercase tracking-tighter mb-4">INVALID EVENT DATE</p>
+        <Link href="/" className="text-xs font-black uppercase hover:underline decoration-2 mt-4 block">
+          ← BACK TO GIGS
         </Link>
       </div>
     );
@@ -43,15 +43,17 @@ export default async function SavePage({
 
   if (duplicate) {
     return (
-      <div className="max-w-md mx-auto text-center py-16">
-        <p className="text-yellow-400 text-xl font-medium mb-2">Already saved!</p>
-        <p className="text-gray-300">{artist}</p>
-        <p className="text-gray-400">{location}</p>
+      <div className="border-4 border-black p-12 text-center brutalist-shadow max-w-md mx-auto">
+        <p className="text-4xl font-black uppercase tracking-tighter leading-none mb-6">
+          ALREADY SAVED
+        </p>
+        <p className="text-lg font-black uppercase tracking-tighter">{artist}</p>
+        <p className="text-xs font-bold uppercase mt-1 text-gray-600">{location}</p>
         <Link
           href={`/gigs/${duplicate.id}`}
-          className="text-indigo-400 hover:underline mt-6 block"
+          className="inline-block bg-black text-white font-black text-xs uppercase px-5 py-3 mt-8 hover:invert transition-all"
         >
-          View gig →
+          VIEW GIG →
         </Link>
       </div>
     );
@@ -67,25 +69,27 @@ export default async function SavePage({
   });
 
   return (
-    <div className="max-w-md mx-auto text-center py-16">
-      <div className="text-5xl mb-4">✓</div>
-      <h1 className="text-2xl font-bold mb-2">Gig saved!</h1>
-      <p className="text-gray-200 text-lg font-medium">{gig.artist}</p>
-      <p className="text-gray-400">{gig.location}</p>
-      <p className="text-gray-400">{formattedDate}</p>
+    <div className="border-4 border-black p-12 text-center brutalist-shadow max-w-md mx-auto">
+      <p className="text-6xl font-black mb-6">✓</p>
+      <h1 className="text-4xl font-black uppercase tracking-tighter leading-none mb-6">
+        GIG SAVED
+      </h1>
+      <p className="text-xl font-black uppercase tracking-tighter">{gig.artist}</p>
+      <p className="text-xs font-bold uppercase mt-1 text-gray-600">{gig.location}</p>
+      <p className="text-xs font-medium mt-1 text-gray-500">{formattedDate}</p>
 
       <div className="mt-8 flex gap-3 justify-center">
         <Link
           href={`/gigs/${gig.id}/edit`}
-          className="bg-indigo-600 hover:bg-indigo-500 px-5 py-2 rounded-lg text-sm font-medium"
+          className="bg-black text-white font-black text-xs uppercase px-5 py-3 hover:invert transition-all active:translate-x-0.5 active:translate-y-0.5"
         >
-          Set alerts →
+          SET ALERTS →
         </Link>
         <Link
           href="/"
-          className="bg-gray-800 hover:bg-gray-700 px-5 py-2 rounded-lg text-sm font-medium text-gray-300"
+          className="border-2 border-black font-black text-xs uppercase px-5 py-3 hover:bg-black hover:text-white transition-colors"
         >
-          View all gigs
+          VIEW ALL GIGS
         </Link>
       </div>
     </div>

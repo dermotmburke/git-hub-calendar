@@ -14,13 +14,15 @@ export default async function GigsPage({
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold">All Gigs</h1>
+      <div className="flex items-end justify-between mb-8">
+        <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none">
+          ALL GIGS
+        </h1>
         <a
           href={showPast ? '/gigs' : '/gigs?past=true'}
-          className="text-sm text-indigo-400 hover:underline"
+          className="text-xs font-black uppercase border-2 border-black px-3 py-1 hover:bg-black hover:text-white transition-colors shrink-0"
         >
-          {showPast ? 'Hide past gigs' : 'Show past gigs'}
+          {showPast ? 'HIDE PAST' : 'SHOW PAST'}
         </a>
       </div>
       <GigList gigs={gigs} />

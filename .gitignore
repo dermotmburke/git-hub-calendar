@@ -13,3 +13,5 @@ auth/token.json
 
 # OS
 .DS_Store
+
+.idea

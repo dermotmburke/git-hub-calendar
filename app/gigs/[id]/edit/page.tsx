@@ -14,11 +14,16 @@ export default async function EditGigPage({
 
   return (
     <div className="max-w-lg">
-      <Link href={`/gigs/${id}`} className="text-gray-400 hover:text-white text-sm mb-6 block">
-        ← Back
+      <Link
+        href={`/gigs/${id}`}
+        className="text-xs font-black uppercase hover:underline decoration-2 mb-8 block"
+      >
+        ← BACK
       </Link>
-      <h1 className="text-2xl font-bold mb-1">{gig.artist}</h1>
-      <p className="text-gray-400 mb-8">{gig.location}</p>
+      <h1 className="text-4xl font-black uppercase tracking-tighter leading-none mb-2">
+        {gig.artist}
+      </h1>
+      <p className="text-xs font-bold uppercase mb-8 text-gray-600">{gig.location}</p>
       <EditGigForm gig={gig} />
     </div>
   );

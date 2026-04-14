@@ -65,6 +65,7 @@ export async function createGig(data: {
       summary: data.artist,
       location: data.location,
       description: data.notes ?? '',
+      colorId: '5',
       start: { dateTime: data.eventDate.toISOString() },
       end: { dateTime: endDate.toISOString() },
       extendedProperties: {

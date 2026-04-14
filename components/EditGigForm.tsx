@@ -56,35 +56,37 @@ export default function EditGigForm({ gig }: { gig: Gig }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-1.5">Ticket URL</label>
+        <label className="block text-xs font-black uppercase tracking-widest mb-2">
+          TICKET URL
+        </label>
         <input
           type="url"
           value={ticketUrl}
           onChange={(e) => setTicketUrl(e.target.value)}
           placeholder="https://ticketmaster.com/..."
-          className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full bg-white border-2 border-black px-3 py-2 text-sm font-medium placeholder-gray-400 focus:outline-none focus:border-[4px]"
         />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-1.5">
-          Ticket sale date{' '}
-          <span className="text-gray-500 font-normal">(leave blank if unknown)</span>
+        <label className="block text-xs font-black uppercase tracking-widest mb-2">
+          TICKET SALE DATE{' '}
+          <span className="font-medium normal-case tracking-normal">(leave blank if unknown)</span>
         </label>
         <input
           type="datetime-local"
           value={ticketSaleDate}
           onChange={(e) => setTicketSaleDate(e.target.value)}
-          className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full bg-white border-2 border-black px-3 py-2 text-sm font-medium focus:outline-none focus:border-[4px]"
         />
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-xs font-medium mt-1 text-gray-500">
           You&apos;ll get a Slack DM when this date arrives.
         </p>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-1.5">
-          Pre-event reminder
+        <label className="block text-xs font-black uppercase tracking-widest mb-2">
+          PRE-EVENT REMINDER
         </label>
         <div className="flex items-center gap-3">
           <input
@@ -93,42 +95,44 @@ export default function EditGigForm({ gig }: { gig: Gig }) {
             max={30}
             value={reminderDaysBefore}
             onChange={(e) => setReminderDaysBefore(parseInt(e.target.value, 10))}
-            className="w-20 bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-20 bg-white border-2 border-black px-3 py-2 text-sm font-medium focus:outline-none focus:border-[4px]"
           />
-          <span className="text-gray-400 text-sm">days before the gig</span>
+          <span className="text-xs font-black uppercase">DAYS BEFORE THE GIG</span>
         </div>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-xs font-medium mt-1 text-gray-500">
           You&apos;ll get a Slack DM this many days before.
         </p>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-300 mb-1.5">Notes</label>
+        <label className="block text-xs font-black uppercase tracking-widest mb-2">NOTES</label>
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           placeholder="Anything to remember..."
           rows={3}
-          className="w-full bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+          className="w-full bg-white border-2 border-black px-3 py-2 text-sm font-medium placeholder-gray-400 focus:outline-none focus:border-[4px] resize-none"
         />
       </div>
 
-      {error && <p className="text-red-400 text-sm">{error}</p>}
+      {error && (
+        <p className="text-xs font-black uppercase border-2 border-black px-3 py-2">{error}</p>
+      )}
 
       <div className="flex gap-3">
         <button
           type="submit"
           disabled={saving}
-          className="flex-1 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 px-5 py-2.5 rounded-lg text-sm font-medium transition-colors"
+          className="flex-1 bg-black text-white font-black uppercase text-sm px-5 py-3 disabled:opacity-50 hover:invert transition-all active:translate-x-0.5 active:translate-y-0.5"
         >
-          {saving ? 'Saving…' : 'Save changes'}
+          {saving ? 'SAVING…' : 'SAVE CHANGES'}
         </button>
         <button
           type="button"
           onClick={handleDelete}
-          className="px-4 py-2.5 rounded-lg text-sm font-medium text-red-400 hover:bg-red-900/30 transition-colors"
+          className="px-4 py-3 text-sm font-black uppercase border-2 border-black hover:bg-black hover:text-white transition-colors"
         >
-          Remove
+          REMOVE
         </button>
       </div>
     </form>

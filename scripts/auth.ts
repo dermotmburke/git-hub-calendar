@@ -17,6 +17,17 @@
 
 import { google } from 'googleapis';
 import * as readline from 'readline';
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Load .env.local so this script works when run directly via ts-node
+const envPath = path.resolve(process.cwd(), '.env.local');
+if (fs.existsSync(envPath)) {
+  for (const line of fs.readFileSync(envPath, 'utf8').split('\n')) {
+    const match = line.match(/^([^#=\s][^=]*)=(.*)$/);
+    if (match) process.env[match[1]] = match[2].trim();
+  }
+}
 
 const SCOPES = ['https://www.googleapis.com/auth/calendar'];
 

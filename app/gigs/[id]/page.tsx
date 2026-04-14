@@ -30,31 +30,32 @@ export default async function GigDetailPage({
 
   return (
     <div className="max-w-2xl">
-      <Link href="/gigs" className="text-gray-400 hover:text-white text-sm mb-6 block">
-        ← All gigs
+      <Link
+        href="/gigs"
+        className="text-xs font-black uppercase hover:underline decoration-2 mb-8 block"
+      >
+        ← ALL GIGS
       </Link>
 
-      <div className="bg-gray-900 rounded-xl p-6 space-y-4">
+      <div className="border-4 border-black p-6 brutalist-shadow space-y-6">
         <div className="flex items-start justify-between gap-4">
-          <h1 className="text-3xl font-bold">{gig.artist}</h1>
+          <h1 className="text-4xl font-black uppercase tracking-tighter leading-none">
+            {gig.artist}
+          </h1>
           {!isPast && (
             <span
-              className={`text-xs font-medium px-2 py-1 rounded-full shrink-0 ${
-                daysUntil <= 3
-                  ? 'bg-red-900 text-red-300'
-                  : daysUntil <= 14
-                  ? 'bg-yellow-900 text-yellow-300'
-                  : 'bg-gray-800 text-gray-400'
+              className={`text-xs font-black px-2 py-1 shrink-0 border-2 border-black ${
+                daysUntil <= 3 ? 'bg-black text-white' : ''
               }`}
             >
-              {daysUntil === 0 ? 'Today' : daysUntil === 1 ? 'Tomorrow' : `${daysUntil} days`}
+              {daysUntil === 0 ? 'TODAY' : daysUntil === 1 ? 'TOMORROW' : `${daysUntil} DAYS`}
             </span>
           )}
         </div>
 
-        <div className="text-gray-300 space-y-1">
-          <p>{gig.location}</p>
-          <p>
+        <div className="space-y-1">
+          <p className="text-sm font-bold uppercase">{gig.location}</p>
+          <p className="text-sm font-medium">
             {formattedDate} at {formattedTime}
           </p>
         </div>
@@ -64,62 +65,57 @@ export default async function GigDetailPage({
             href={gig.ticketUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block bg-indigo-600 hover:bg-indigo-500 px-4 py-2 rounded-lg text-sm font-medium"
+            className="inline-block bg-black text-white font-black text-xs uppercase px-4 py-2 hover:invert transition-all active:translate-x-0.5 active:translate-y-0.5"
           >
-            Buy tickets ↗
+            BUY TICKETS ↗
           </a>
         )}
 
-        <div className="border-t border-gray-800 pt-4 space-y-2">
-          <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wide">Alerts</h2>
-          <div className="flex flex-col gap-1 text-sm">
-            <span
-              className={`inline-flex items-center gap-1.5 ${
-                gig.ticketSaleDate ? 'text-gray-300' : 'text-gray-500'
-              }`}
-            >
+        <div className="border-t-4 border-black pt-4 space-y-2">
+          <h2 className="text-xs font-black uppercase tracking-widest">ALERTS</h2>
+          <div className="flex flex-col gap-2 text-sm font-medium">
+            <span className={gig.ticketSaleDate ? '' : 'opacity-40'}>
               {gig.ticketSaleDate ? (
                 <>
-                  🎫 Ticket sale:{' '}
+                  TICKET SALE:{' '}
                   {gig.ticketSaleDate.toLocaleDateString('en-GB', {
                     day: 'numeric',
                     month: 'long',
                     year: 'numeric',
                   })}
                   {gig.ticketSaleAlertSent && (
-                    <span className="text-green-400 text-xs">✓ alert sent</span>
+                    <span className="ml-2 text-xs font-black border-2 border-black px-1">
+                      ✓ SENT
+                    </span>
                   )}
                 </>
               ) : (
-                '🎫 No ticket sale date set'
+                'NO TICKET SALE DATE SET'
               )}
             </span>
-            <span className="text-gray-300">
-              🔔 Reminder: {gig.reminderDaysBefore} day
-              {gig.reminderDaysBefore === 1 ? '' : 's'} before
+            <span>
+              REMINDER: {gig.reminderDaysBefore} DAY{gig.reminderDaysBefore === 1 ? '' : 'S'} BEFORE
               {gig.preEventAlertSent && (
-                <span className="text-green-400 text-xs ml-2">✓ sent</span>
+                <span className="ml-2 text-xs font-black border-2 border-black px-1">✓ SENT</span>
               )}
             </span>
           </div>
         </div>
 
         {gig.notes && (
-          <div className="border-t border-gray-800 pt-4">
-            <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">
-              Notes
-            </h2>
-            <p className="text-gray-300 text-sm whitespace-pre-wrap">{gig.notes}</p>
+          <div className="border-t-4 border-black pt-4">
+            <h2 className="text-xs font-black uppercase tracking-widest mb-2">NOTES</h2>
+            <p className="text-sm font-medium whitespace-pre-wrap">{gig.notes}</p>
           </div>
         )}
       </div>
 
-      <div className="mt-4">
+      <div className="mt-6">
         <Link
           href={`/gigs/${id}/edit`}
-          className="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg text-sm font-medium inline-block"
+          className="bg-black text-white font-black text-xs uppercase px-5 py-3 inline-block hover:invert transition-all active:translate-x-0.5 active:translate-y-0.5"
         >
-          Edit / Set alerts
+          EDIT / SET ALERTS
         </Link>
       </div>
     </div>

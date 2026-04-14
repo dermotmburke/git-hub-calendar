@@ -6,6 +6,21 @@ function getDaysUntil(date: Date): number {
   return Math.ceil((date.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 }
 
+function Hourglass() {
+  return (
+    <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor">
+      {/* top trapezoid */}
+      <polygon points="1,1 9,1 7,5 3,5" />
+      {/* bottom trapezoid */}
+      <polygon points="3,7 7,7 9,11 1,11" />
+      {/* top bar */}
+      <rect x="0" y="0" width="10" height="1.5" />
+      {/* bottom bar */}
+      <rect x="0" y="10.5" width="10" height="1.5" />
+    </svg>
+  );
+}
+
 export default function GigCard({ gig }: { gig: Gig }) {
   const daysUntil = getDaysUntil(gig.eventDate);
   const isPast = daysUntil < 0;
@@ -22,51 +37,53 @@ export default function GigCard({ gig }: { gig: Gig }) {
 
   return (
     <div
-      className={`bg-gray-900 rounded-xl p-5 flex flex-col gap-3 ${
-        isPast ? 'opacity-50' : ''
+      className={`border-4 border-black p-5 flex flex-col gap-4 ${
+        isPast ? 'opacity-50' : 'brutalist-shadow'
       }`}
     >
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <h2 className="text-lg font-semibold text-white truncate">{gig.artist}</h2>
-          <p className="text-gray-400 text-sm">{gig.location}</p>
-          <p className="text-gray-500 text-sm">
+          <h2 className="text-2xl font-black uppercase tracking-tighter leading-none text-black">
+            {gig.artist}
+          </h2>
+          <p className="text-xs font-bold uppercase mt-1">{gig.location}</p>
+          <p className="text-xs font-medium mt-1 text-gray-600">
             {formattedDate} · {formattedTime}
           </p>
         </div>
         {!isPast && (
           <span
-            className={`text-xs font-medium px-2.5 py-1 rounded-full shrink-0 ${
-              daysUntil === 0
-                ? 'bg-red-900 text-red-300'
-                : daysUntil <= 3
-                ? 'bg-orange-900 text-orange-300'
-                : daysUntil <= 14
-                ? 'bg-yellow-900 text-yellow-300'
-                : 'bg-gray-800 text-gray-400'
+            className={`text-xs font-black px-2 py-1 shrink-0 border-2 border-black ${
+              daysUntil <= 3 ? 'bg-black text-white' : ''
             }`}
           >
-            {daysUntil === 0 ? 'Today' : daysUntil === 1 ? 'Tomorrow' : `${daysUntil}d`}
+            {daysUntil === 0 ? 'TODAY' : daysUntil === 1 ? 'TOMORROW' : `${daysUntil}D`}
           </span>
         )}
       </div>
 
-      <div className="flex items-center gap-4 text-xs">
+      <div className="flex items-center gap-3 text-xs font-black uppercase">
         {gig.ticketUrl && (
           <a
             href={gig.ticketUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-indigo-400 hover:underline"
+            className="bg-black text-white px-3 py-1 hover:invert transition-all active:translate-x-0.5 active:translate-y-0.5"
           >
-            Tickets ↗
+            TICKETS ↗
           </a>
         )}
-        <Link href={`/gigs/${gig.id}`} className="text-gray-500 hover:text-white">
-          Details
+        <Link
+          href={`/gigs/${gig.id}`}
+          className="border-2 border-black px-3 py-1 hover:bg-black hover:text-white transition-colors"
+        >
+          DETAILS
         </Link>
-        <Link href={`/gigs/${gig.id}/edit`} className="text-gray-500 hover:text-white">
-          Edit / Alerts
+        <Link
+          href={`/gigs/${gig.id}/edit`}
+          className="hover:underline decoration-2"
+        >
+          EDIT
         </Link>
       </div>
 
@@ -74,25 +91,43 @@ export default function GigCard({ gig }: { gig: Gig }) {
         <div className="flex flex-wrap gap-2">
           {gig.ticketSaleDate && (
             <span
-              className={`text-xs px-2 py-0.5 rounded-full ${
-                gig.ticketSaleAlertSent
-                  ? 'bg-green-900/40 text-green-400'
-                  : 'bg-gray-800 text-gray-500'
+              className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 font-bold border-2 ${
+                gig.ticketSaleAlertSent ? 'bg-black text-white border-black' : 'border-black'
               }`}
             >
-              {gig.ticketSaleAlertSent ? '✓ Ticket alert sent' : '⏳ Ticket sale alert set'}
+              {gig.ticketSaleAlertSent ? (
+                <>
+                  <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                    <polyline points="1,5 4,8 9,2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square"/>
+                  </svg>
+                  TICKET ALERT SENT
+                </>
+              ) : (
+                <>
+                  <Hourglass />
+                  TICKET SALE ALERT SET
+                </>
+              )}
             </span>
           )}
           <span
-            className={`text-xs px-2 py-0.5 rounded-full ${
-              gig.preEventAlertSent
-                ? 'bg-green-900/40 text-green-400'
-                : 'bg-gray-800 text-gray-500'
+            className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 font-bold border-2 ${
+              gig.preEventAlertSent ? 'bg-black text-white border-black' : 'border-black'
             }`}
           >
-            {gig.preEventAlertSent
-              ? '✓ Event reminder sent'
-              : `⏳ Reminder ${gig.reminderDaysBefore}d before`}
+            {gig.preEventAlertSent ? (
+              <>
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
+                  <polyline points="1,5 4,8 9,2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="square"/>
+                </svg>
+                EVENT REMINDER SENT
+              </>
+            ) : (
+              <>
+                <Hourglass />
+                {`REMINDER ${gig.reminderDaysBefore}D BEFORE`}
+              </>
+            )}
           </span>
         </div>
       )}
