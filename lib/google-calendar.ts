@@ -89,7 +89,7 @@ export async function listGigs(upcomingOnly = false): Promise<Gig[]> {
 
   const params: calendar_v3.Params$Resource$Events$List = {
     calendarId: CALENDAR_ID(),
-    privateExtendedProperty: `source=${SOURCE_TAG}`,
+    privateExtendedProperty: [`source=${SOURCE_TAG}`],
     orderBy: 'startTime',
     singleEvents: true,
     maxResults: 250,
@@ -168,7 +168,7 @@ export async function getGigsForAlertCheck(): Promise<Gig[]> {
 
   const response = await calendar.events.list({
     calendarId: CALENDAR_ID(),
-    privateExtendedProperty: `source=${SOURCE_TAG}`,
+    privateExtendedProperty: [`source=${SOURCE_TAG}`],
     orderBy: 'startTime',
     singleEvents: true,
     maxResults: 250,
