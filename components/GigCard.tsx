@@ -43,17 +43,17 @@ export default function GigCard({ gig }: { gig: Gig }) {
     >
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <h2 className="text-2xl font-black uppercase tracking-tighter leading-none">
+          <h2 className="font-headline text-2xl uppercase tracking-tighter leading-none">
             {gig.artist}
           </h2>
-          <p className="text-xs font-bold uppercase mt-1">{gig.location}</p>
-          <p className="text-xs font-medium mt-1 text-gray-600 dark:text-gray-400">
+          <p className="font-label text-xs font-bold uppercase mt-1">{gig.location}</p>
+          <p className="font-label text-xs font-medium mt-1 text-gray-600 dark:text-gray-400">
             {formattedDate} · {formattedTime}
           </p>
         </div>
         {!isPast && (
           <span
-            className={`text-xs font-black px-2 py-1 shrink-0 border-2 border-black dark:border-white ${
+            className={`font-label text-xs font-black px-2 py-1 shrink-0 border-2 border-black dark:border-white ${
               daysUntil <= 3 ? 'bg-black text-white dark:bg-white dark:text-black' : ''
             }`}
           >
@@ -62,7 +62,7 @@ export default function GigCard({ gig }: { gig: Gig }) {
         )}
       </div>
 
-      <div className="flex items-center gap-3 text-xs font-black uppercase">
+      <div className="flex items-center gap-3 font-label text-xs font-black uppercase">
         {gig.ticketUrl && (
           <a
             href={gig.ticketUrl}
@@ -91,7 +91,7 @@ export default function GigCard({ gig }: { gig: Gig }) {
         <div className="flex flex-wrap gap-2">
           {gig.ticketSaleDate && (
             <span
-              className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 font-bold border-2 ${
+              className={`font-label inline-flex items-center gap-1 text-xs px-2 py-0.5 font-bold border-2 ${
                 gig.ticketSaleAlertSent
                   ? 'bg-black text-white border-black dark:bg-white dark:text-black dark:border-white'
                   : 'border-black dark:border-white'
@@ -113,7 +113,7 @@ export default function GigCard({ gig }: { gig: Gig }) {
             </span>
           )}
           <span
-            className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 font-bold border-2 ${
+            className={`font-label inline-flex items-center gap-1 text-xs px-2 py-0.5 font-bold border-2 ${
               gig.preEventAlertSent
                 ? 'bg-black text-white border-black dark:bg-white dark:text-black dark:border-white'
                 : 'border-black dark:border-white'

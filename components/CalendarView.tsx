@@ -69,7 +69,7 @@ function AddGigModal({ date, onClose, onSaved }: AddGigModalProps) {
     >
       <div className="bg-white dark:bg-black border-4 border-black dark:border-white brutalist-shadow w-full max-w-md mx-4">
         <div className="flex items-center justify-between border-b-4 border-black dark:border-white px-6 py-4">
-          <h2 className="text-xl font-black uppercase tracking-tighter">ADD GIG</h2>
+          <h2 className="font-headline text-xl uppercase tracking-tighter">ADD GIG</h2>
           <button
             onClick={onClose}
             className="font-black text-xl hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black w-8 h-8 flex items-center justify-center transition-colors"
@@ -80,7 +80,7 @@ function AddGigModal({ date, onClose, onSaved }: AddGigModalProps) {
 
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
-            <label className="block text-xs font-black uppercase tracking-widest mb-1">
+            <label className="font-label block text-xs font-black uppercase tracking-widest mb-1">
               ARTIST *
             </label>
             <input
@@ -95,7 +95,7 @@ function AddGigModal({ date, onClose, onSaved }: AddGigModalProps) {
           </div>
 
           <div>
-            <label className="block text-xs font-black uppercase tracking-widest mb-1">
+            <label className="font-label block text-xs font-black uppercase tracking-widest mb-1">
               VENUE *
             </label>
             <input
@@ -109,7 +109,7 @@ function AddGigModal({ date, onClose, onSaved }: AddGigModalProps) {
           </div>
 
           <div>
-            <label className="block text-xs font-black uppercase tracking-widest mb-1">
+            <label className="font-label block text-xs font-black uppercase tracking-widest mb-1">
               DATE &amp; TIME *
             </label>
             <input
@@ -122,7 +122,7 @@ function AddGigModal({ date, onClose, onSaved }: AddGigModalProps) {
           </div>
 
           <div>
-            <label className="block text-xs font-black uppercase tracking-widest mb-1">
+            <label className="font-label block text-xs font-black uppercase tracking-widest mb-1">
               TICKET URL
             </label>
             <input
@@ -135,7 +135,7 @@ function AddGigModal({ date, onClose, onSaved }: AddGigModalProps) {
           </div>
 
           <div>
-            <label className="block text-xs font-black uppercase tracking-widest mb-1">
+            <label className="font-label block text-xs font-black uppercase tracking-widest mb-1">
               NOTES
             </label>
             <textarea
@@ -246,7 +246,7 @@ export default function CalendarView({ initialGigs }: { initialGigs: GigJson[] }
       {/* Calendar header */}
       <div className="flex justify-between items-end mb-8">
         <div>
-          <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none">
+          <h1 className="font-headline text-6xl md:text-8xl uppercase tracking-tighter leading-none">
             {MONTHS[month]}
           </h1>
           <p className="text-lg font-bold mt-1">{year}</p>
@@ -270,7 +270,7 @@ export default function CalendarView({ initialGigs }: { initialGigs: GigJson[] }
       {/* Calendar grid */}
       <div className="grid grid-cols-7 border-t-4 border-l-4 border-black dark:border-white">
         {DAYS.map((d) => (
-          <div key={d} className="border-r-4 border-b-4 border-black dark:border-white p-2 text-xs font-black uppercase text-center">
+          <div key={d} className="font-label border-r-4 border-b-4 border-black dark:border-white p-2 text-xs font-black uppercase text-center">
             {d}
           </div>
         ))}
@@ -309,7 +309,7 @@ export default function CalendarView({ initialGigs }: { initialGigs: GigJson[] }
                 {dayGigs.slice(0, 3).map((gig) => (
                   <div
                     key={gig.id}
-                    className={`text-[10px] font-black uppercase leading-tight truncate px-1 ${
+                    className={`font-label text-[10px] font-black uppercase leading-tight truncate px-1 ${
                       isToday ? 'bg-white text-black dark:bg-black dark:text-white' : 'bg-black text-white dark:bg-white dark:text-black'
                     }`}
                     title={gig.artist}
@@ -326,7 +326,7 @@ export default function CalendarView({ initialGigs }: { initialGigs: GigJson[] }
 
               {/* Add hint on hover */}
               {dayGigs.length === 0 && (
-                <div className="absolute bottom-2 right-2 text-[10px] font-black uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="font-label absolute bottom-2 right-2 text-[10px] font-black uppercase opacity-0 group-hover:opacity-100 transition-opacity">
                   + ADD
                 </div>
               )}
@@ -336,7 +336,7 @@ export default function CalendarView({ initialGigs }: { initialGigs: GigJson[] }
       </div>
 
       {/* Legend */}
-      <p className="text-xs font-bold uppercase mt-4 text-gray-500 dark:text-gray-400">
+      <p className="font-label text-xs font-bold uppercase mt-4 text-gray-500 dark:text-gray-400">
         CLICK ANY DAY TO ADD A GIG
       </p>
 

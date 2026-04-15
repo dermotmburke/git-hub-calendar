@@ -58,7 +58,7 @@ export default function EditGigForm({ gig }: { gig: Gig }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label className="block text-xs font-black uppercase tracking-widest mb-2">
+        <label className="font-label block text-xs font-black uppercase tracking-widest mb-2">
           TICKET URL
         </label>
         <input
@@ -71,7 +71,7 @@ export default function EditGigForm({ gig }: { gig: Gig }) {
       </div>
 
       <div>
-        <label className="block text-xs font-black uppercase tracking-widest mb-2">
+        <label className="font-label block text-xs font-black uppercase tracking-widest mb-2">
           TICKET SALE DATE{' '}
           <span className="font-medium normal-case tracking-normal">(leave blank if unknown)</span>
         </label>
@@ -87,7 +87,7 @@ export default function EditGigForm({ gig }: { gig: Gig }) {
       </div>
 
       <div>
-        <label className="block text-xs font-black uppercase tracking-widest mb-2">
+        <label className="font-label block text-xs font-black uppercase tracking-widest mb-2">
           PRE-EVENT REMINDER
         </label>
         <div className="flex items-center gap-3">
@@ -99,7 +99,7 @@ export default function EditGigForm({ gig }: { gig: Gig }) {
             onChange={(e) => setReminderDaysBefore(parseInt(e.target.value, 10))}
             className="w-20 bg-white dark:bg-black border-2 border-black dark:border-white px-3 py-2 text-sm font-medium focus:outline-none focus:border-[4px]"
           />
-          <span className="text-xs font-black uppercase">DAYS BEFORE THE GIG</span>
+          <span className="font-label text-xs font-black uppercase">DAYS BEFORE THE GIG</span>
         </div>
         <p className="text-xs font-medium mt-1 text-gray-500 dark:text-gray-400">
           You&apos;ll get a Slack DM this many days before.
@@ -107,7 +107,7 @@ export default function EditGigForm({ gig }: { gig: Gig }) {
       </div>
 
       <div>
-        <label className="block text-xs font-black uppercase tracking-widest mb-2">NOTES</label>
+        <label className="font-label block text-xs font-black uppercase tracking-widest mb-2">NOTES</label>
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}

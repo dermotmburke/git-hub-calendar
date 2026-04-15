@@ -39,12 +39,12 @@ export default async function GigDetailPage({
 
       <div className="border-4 border-black dark:border-white p-6 brutalist-shadow space-y-6">
         <div className="flex items-start justify-between gap-4">
-          <h1 className="text-4xl font-black uppercase tracking-tighter leading-none">
+          <h1 className="font-headline text-4xl uppercase tracking-tighter leading-none">
             {gig.artist}
           </h1>
           {!isPast && (
             <span
-              className={`text-xs font-black px-2 py-1 shrink-0 border-2 border-black dark:border-white ${
+              className={`font-label text-xs font-black px-2 py-1 shrink-0 border-2 border-black dark:border-white ${
                 daysUntil <= 3 ? 'bg-black text-white dark:bg-white dark:text-black' : ''
               }`}
             >
@@ -54,8 +54,8 @@ export default async function GigDetailPage({
         </div>
 
         <div className="space-y-1">
-          <p className="text-sm font-bold uppercase">{gig.location}</p>
-          <p className="text-sm font-medium">
+          <p className="font-label text-sm font-bold uppercase">{gig.location}</p>
+          <p className="font-label text-sm font-medium">
             {formattedDate} at {formattedTime}
           </p>
         </div>
@@ -72,8 +72,8 @@ export default async function GigDetailPage({
         )}
 
         <div className="border-t-4 border-black dark:border-white pt-4 space-y-2">
-          <h2 className="text-xs font-black uppercase tracking-widest">ALERTS</h2>
-          <div className="flex flex-col gap-2 text-sm font-medium">
+          <h2 className="font-label text-xs font-black uppercase tracking-widest">ALERTS</h2>
+          <div className="font-label flex flex-col gap-2 text-sm font-medium">
             <span className={gig.ticketSaleDate ? '' : 'opacity-40'}>
               {gig.ticketSaleDate ? (
                 <>
@@ -104,7 +104,7 @@ export default async function GigDetailPage({
 
         {gig.notes && (
           <div className="border-t-4 border-black dark:border-white pt-4">
-            <h2 className="text-xs font-black uppercase tracking-widest mb-2">NOTES</h2>
+            <h2 className="font-label text-xs font-black uppercase tracking-widest mb-2">NOTES</h2>
             <p className="text-sm font-medium whitespace-pre-wrap">{gig.notes}</p>
           </div>
         )}

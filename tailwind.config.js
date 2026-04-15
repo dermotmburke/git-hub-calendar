@@ -25,9 +25,9 @@ module.exports = {
         full: '0px',
       },
       fontFamily: {
-        headline: ['Space Grotesk', 'sans-serif'],
+        headline: ['Bebas Neue', 'sans-serif'],
         body: ['Space Grotesk', 'sans-serif'],
-        label: ['Space Grotesk', 'sans-serif'],
+        label: ['Space Mono', 'monospace'],
       },
       boxShadow: {
         brutalist: '4px 4px 0px 0px #000000',
