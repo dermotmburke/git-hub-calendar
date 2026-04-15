@@ -11,6 +11,9 @@ dist/
 auth/credentials.json
 auth/token.json
 
+# TypeScript build cache
+*.tsbuildinfo
+
 # OS
 .DS_Store
 
