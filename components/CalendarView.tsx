@@ -246,7 +246,7 @@ export default function CalendarView({ initialGigs }: { initialGigs: GigJson[] }
       {/* Calendar header */}
       <div className="flex justify-between items-end mb-8">
         <div>
-          <h1 className="font-headline text-6xl md:text-8xl uppercase tracking-tighter leading-none">
+          <h1 className="font-headline text-4xl sm:text-6xl md:text-8xl uppercase tracking-tighter leading-none">
             {MONTHS[month]}
           </h1>
           <p className="text-lg font-bold mt-1">{year}</p>
@@ -270,7 +270,7 @@ export default function CalendarView({ initialGigs }: { initialGigs: GigJson[] }
       {/* Calendar grid */}
       <div className="grid grid-cols-7 border-t-4 border-l-4 border-black dark:border-white">
         {DAYS.map((d) => (
-          <div key={d} className="font-label border-r-4 border-b-4 border-black dark:border-white p-2 text-xs font-black uppercase text-center">
+          <div key={d} className="font-label border-r-4 border-b-4 border-black dark:border-white p-1 md:p-2 text-[10px] md:text-xs font-black uppercase text-center">
             {d}
           </div>
         ))}
@@ -280,7 +280,7 @@ export default function CalendarView({ initialGigs }: { initialGigs: GigJson[] }
             return (
               <div
                 key={`empty-${i}`}
-                className="border-r-4 border-b-4 border-black dark:border-white p-2 min-h-[100px] bg-surface-container dark:bg-zinc-900"
+                className="border-r-4 border-b-4 border-black dark:border-white p-1 md:p-2 min-h-[60px] md:min-h-[100px] bg-surface-container dark:bg-zinc-900"
               />
             );
           }
@@ -296,20 +296,33 @@ export default function CalendarView({ initialGigs }: { initialGigs: GigJson[] }
             <button
               key={day}
               onClick={() => handleDayClick(day)}
-              className={`border-r-4 border-b-4 border-black dark:border-white p-2 min-h-[100px] text-left relative group transition-colors ${
+              className={`border-r-4 border-b-4 border-black dark:border-white p-1 md:p-2 min-h-[60px] md:min-h-[100px] text-left relative group transition-colors ${
                 isToday
                   ? 'bg-black text-white dark:bg-white dark:text-black'
                   : 'hover:bg-surface-container dark:hover:bg-zinc-900'
               }`}
             >
-              <span className="text-sm font-black">{day}</span>
+              <span className="text-xs md:text-sm font-black">{day}</span>
 
-              {/* Gig dots */}
-              <div className="mt-2 flex flex-col gap-1">
+              {/* Gig indicators */}
+              <div className="mt-1 flex flex-col gap-1">
+                {/* Mobile: dots only */}
+                {dayGigs.length > 0 && (
+                  <div className="flex gap-0.5 flex-wrap md:hidden">
+                    {dayGigs.slice(0, 3).map((gig) => (
+                      <div
+                        key={gig.id}
+                        className={`w-1.5 h-1.5 ${isToday ? 'bg-white dark:bg-black' : 'bg-black dark:bg-white'}`}
+                        title={gig.artist}
+                      />
+                    ))}
+                  </div>
+                )}
+                {/* Desktop: artist name labels */}
                 {dayGigs.slice(0, 3).map((gig) => (
                   <div
                     key={gig.id}
-                    className={`font-label text-[10px] font-black uppercase leading-tight truncate px-1 ${
+                    className={`hidden md:block font-label text-[10px] font-black uppercase leading-tight truncate px-1 ${
                       isToday ? 'bg-white text-black dark:bg-black dark:text-white' : 'bg-black text-white dark:bg-white dark:text-black'
                     }`}
                     title={gig.artist}
@@ -318,7 +331,7 @@ export default function CalendarView({ initialGigs }: { initialGigs: GigJson[] }
                   </div>
                 ))}
                 {dayGigs.length > 3 && (
-                  <div className="text-[10px] font-black">
+                  <div className="hidden md:block text-[10px] font-black">
                     +{dayGigs.length - 3} MORE
                   </div>
                 )}

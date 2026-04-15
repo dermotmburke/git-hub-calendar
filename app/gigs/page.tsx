@@ -15,7 +15,7 @@ export default async function GigsPage({
   return (
     <div>
       <div className="flex items-end justify-between mb-8">
-        <h1 className="font-headline text-6xl md:text-8xl uppercase tracking-tighter leading-none">
+        <h1 className="font-headline text-4xl sm:text-6xl md:text-8xl uppercase tracking-tighter leading-none">
           ALL GIGS
         </h1>
         <a

@@ -8,7 +8,7 @@ export default async function HomePage() {
 
   return (
     <div>
-      <h1 className="font-headline text-6xl md:text-8xl uppercase tracking-tighter leading-none mb-8">
+      <h1 className="font-headline text-4xl sm:text-6xl md:text-8xl uppercase tracking-tighter leading-none mb-8">
         UPCOMING GIGS
       </h1>
       <GigList gigs={gigs} />

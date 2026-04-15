@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 import ThemeToggle from './ThemeToggle';
 
 function Logo() {
@@ -41,24 +44,53 @@ function Logo() {
   );
 }
 
+const navLinkClass = 'hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black px-3 py-1 transition-colors';
+
 export default function Nav() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-white dark:bg-black border-b-4 border-black dark:border-white">
-      <Link href="/" className="text-black dark:text-white">
-        <Logo />
-      </Link>
-      <div className="flex items-center gap-1 font-headline uppercase tracking-wider text-black dark:text-white text-base">
-        <Link href="/" className="hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black px-3 py-1 transition-colors">
-          UPCOMING
+    <nav className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-black border-b-4 border-black dark:border-white">
+      <div className="flex justify-between items-center px-6 py-4">
+        <Link href="/" className="text-black dark:text-white" onClick={() => setOpen(false)}>
+          <Logo />
         </Link>
-        <Link href="/gigs" className="hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black px-3 py-1 transition-colors">
-          ALL GIGS
-        </Link>
-        <Link href="/calendar" className="hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black px-3 py-1 transition-colors">
-          CALENDAR
-        </Link>
-        <ThemeToggle />
+
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-1 font-headline uppercase tracking-wider text-black dark:text-white text-base">
+          <Link href="/" className={navLinkClass}>UPCOMING</Link>
+          <Link href="/gigs" className={navLinkClass}>ALL</Link>
+          <Link href="/calendar" className={navLinkClass}>CALENDAR</Link>
+          <ThemeToggle />
+        </div>
+
+        {/* Mobile: theme toggle + hamburger */}
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
+          <button
+            onClick={() => setOpen(!open)}
+            className="font-black text-xl w-9 h-9 flex items-center justify-center border-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+            aria-label="Toggle menu"
+          >
+            {open ? '✕' : '☰'}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden border-t-4 border-black dark:border-white font-headline uppercase tracking-wider text-base">
+          <Link href="/" onClick={() => setOpen(false)} className="block px-6 py-4 border-b-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+            UPCOMING
+          </Link>
+          <Link href="/gigs" onClick={() => setOpen(false)} className="block px-6 py-4 border-b-2 border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+            ALL
+          </Link>
+          <Link href="/calendar" onClick={() => setOpen(false)} className="block px-6 py-4 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors">
+            CALENDAR
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }

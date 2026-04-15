@@ -62,7 +62,7 @@ export default function GigCard({ gig }: { gig: Gig }) {
         )}
       </div>
 
-      <div className="flex items-center gap-3 font-label text-xs font-black uppercase">
+      <div className="flex flex-wrap items-center gap-2 font-label text-xs font-black uppercase">
         {gig.ticketUrl && (
           <a
             href={gig.ticketUrl}
