@@ -1,4 +1,5 @@
 import { google, calendar_v3 } from 'googleapis';
+import { readStoredToken, writeStoredToken } from './token-store';
 
 const SOURCE_TAG = 'gig-hub-calendar';
 
@@ -6,24 +7,31 @@ const SOURCE_TAG = 'gig-hub-calendar';
 // refresh tokens issued by Google are preserved within a server process.
 let _authClient: InstanceType<typeof google.auth.OAuth2> | null = null;
 
+function getRefreshToken(): string {
+  const stored = readStoredToken();
+  if (stored?.refresh_token) return stored.refresh_token;
+  if (process.env.GOOGLE_REFRESH_TOKEN) return process.env.GOOGLE_REFRESH_TOKEN;
+  throw new Error(
+    'No Google refresh token. Visit /admin/auth to connect Google Calendar.'
+  );
+}
+
 function getAuth() {
   if (!_authClient) {
-    if (!process.env.GOOGLE_REFRESH_TOKEN) {
-      throw new Error(
-        'GOOGLE_REFRESH_TOKEN is not set. Run `npm run auth` to generate a refresh token.'
-      );
-    }
     const oauth2Client = new google.auth.OAuth2(
       process.env.GOOGLE_CLIENT_ID,
       process.env.GOOGLE_CLIENT_SECRET,
       'urn:ietf:wg:oauth:2.0:oob'
     );
-    oauth2Client.setCredentials({
-      refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
-    });
+    oauth2Client.setCredentials({ refresh_token: getRefreshToken() });
     _authClient = oauth2Client;
   }
   return _authClient;
+}
+
+export function updateRefreshToken(token: string): void {
+  writeStoredToken(token);
+  _authClient = null;
 }
 
 function isInvalidGrant(err: unknown): boolean {
@@ -47,7 +55,7 @@ async function withAuthErrorHandling<T>(fn: () => Promise<T>): Promise<T> {
       _authClient = null;
       throw new Error(
         'Google OAuth token is invalid or has been revoked (invalid_grant). ' +
-          'Run `npm run auth` to generate a new refresh token and update GOOGLE_REFRESH_TOKEN.'
+          'Visit /admin/auth to reconnect Google Calendar.'
       );
     }
     throw err;
