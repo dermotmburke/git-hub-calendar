@@ -82,7 +82,7 @@ export default function EditGigForm({ gig }: { gig: Gig }) {
           className={inputClass}
         />
         <p className="text-xs font-medium mt-1 text-gray-500 dark:text-gray-400">
-          You&apos;ll get a Slack DM when this date arrives.
+          An alert will be logged when this date arrives.
         </p>
       </div>
 
@@ -102,7 +102,7 @@ export default function EditGigForm({ gig }: { gig: Gig }) {
           <span className="font-label text-xs font-black uppercase">DAYS BEFORE THE GIG</span>
         </div>
         <p className="text-xs font-medium mt-1 text-gray-500 dark:text-gray-400">
-          You&apos;ll get a Slack DM this many days before.
+          An alert will be logged this many days before.
         </p>
       </div>
 

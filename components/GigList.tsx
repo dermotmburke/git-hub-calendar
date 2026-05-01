@@ -6,7 +6,7 @@ export default function GigList({ gigs }: { gigs: Gig[] }) {
     return (
       <div className="border-4 border-black dark:border-white p-12 text-center brutalist-shadow">
         <p className="font-headline text-4xl uppercase tracking-tighter mb-4">NO GIGS SAVED YET</p>
-        <p className="font-label text-sm font-bold uppercase">Click a Save link in Slack to add one.</p>
+        <p className="font-label text-sm font-bold uppercase">Use the save link to add one.</p>
       </div>
     );
   }
