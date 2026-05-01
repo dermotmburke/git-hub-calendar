@@ -24,6 +24,14 @@ function getAuth() {
       'urn:ietf:wg:oauth:2.0:oob'
     );
     oauth2Client.setCredentials({ refresh_token: getRefreshToken() });
+    // Persist any rotated refresh token Google issues alongside a new access
+    // token. Without this, a server restart after rotation reloads the old
+    // (now-invalidated) token and fails with invalid_grant.
+    oauth2Client.on('tokens', (tokens) => {
+      if (tokens.refresh_token) {
+        writeStoredToken(tokens.refresh_token);
+      }
+    });
     _authClient = oauth2Client;
   }
   return _authClient;
